@@ -1,3 +1,50 @@
+*{
+  box-sizing: border-box;
+}
 body {
+  margin: auto;
+  width: 600px;
+}
+
+h1 {
+  width: 450px;
+  text-align: center;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
+}
+
+.score {
+  width: 60px
+}
+.difficulty{
+  width: 60px
+}
+
+div.grid {
+  display: flex;
+  flex-wrap: wrap;
   background-color: blue;
+  width: 450px;
+  height: 450px;
+}
+
+div {
+  width: 30px;
+  height: 30px;
+}
+
+.invader {
+  background-color: yellow;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.cannon {
+  background-color: red;
 }
