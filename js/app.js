@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // for loop that moves the invaders
     for(let i = 0; i < invaders.length; i++) {
       squares[invaders[i]].classList.remove('invader')
+      console.log(invaders[i], 'hello')
       invaders[i] += direction
       squares[invaders[i]].classList.add('invader')
     }
@@ -74,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
           squares[lazer].classList.remove('invader')
           score++
           scoreBoard.textContent = score
-          console.log(score)
+          const invaderIndex = invaders.indexOf(lazer)
+          invaders.splice(invaderIndex, 1)
         }else if (lazer > -1) {
           squares[lazer].classList.add('lazer')
-          console.log(squares[lazer].classList)
         }
       }, 100)
     }
