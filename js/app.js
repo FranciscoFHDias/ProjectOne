@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const squares = document.querySelectorAll('.grid div')
+  let scoreBoard = document.querySelector('.score')
+  let score = null
   const invaders = [0,2,4,6,8,10,12]
   const width = 15
   let direction = 1
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (invaders.some(invader => invader >= 210)) {
       clearInterval(moveInvadersId)
+      //gameover and reset game
     }
   }
 
@@ -63,10 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const fireLazerId = setInterval(() => {
         squares[lazer].classList.remove('lazer')
         lazer -= width
-        if (lazer > -1) {
-          squares[lazer].classList.add('lazer')
-        }else if (lazer <= 0){
+        if (lazer <= 0){
           clearInterval(fireLazerId)
+        }else if (squares[lazer].classList.contains('invader') === true){
+          clearInterval(fireLazerId)
+          squares[lazer].classList.remove('lazer')
+          squares[lazer].classList.remove('invader')
+          score++
+          scoreBoard.textContent = score
+          console.log(score)
+        }else if (lazer > -1) {
+          squares[lazer].classList.add('lazer')
+          console.log(squares[lazer].classList)
         }
       }, 100)
     }
