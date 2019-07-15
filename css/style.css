@@ -45,6 +45,10 @@ div {
 
 }
 
-.cannon {
+.spaceShip {
   background-color: red;
+}
+
+.lazer {
+  background-color: green;
 }

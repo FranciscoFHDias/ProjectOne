@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const invaders = [0,2,4,6,8,10,12]
   const width = 15
   let direction = 1
-  let currentIndex = 0
-  let cannon = [217]
+  let spaceShipIndex = 217
+  let lazer = spaceShipIndex
 
 
   console.log(invaders)
@@ -31,71 +31,72 @@ document.addEventListener('DOMContentLoaded', () => {
       else direction = -1
     }
 
+    if (invaders.some(invader => invader >= 210)) {
+      clearInterval(moveInvadersId)
+    }
   }
 
-  setInterval(moveInvaders, 500)
-  // move 1 line down
-
-  // move the line 1 square to the left
-
-  // if the line get to line 15 game is over and player loses
-
-
+  const moveInvadersId = setInterval(moveInvaders, 500)
 
   function placeCannon () {
-    squares[cannon].classList.add('cannon')
+    squares[spaceShipIndex].classList.add('spaceShip')
   }
 
   placeCannon()
 
-
-
-  function moveCannon (e) {
-
-    for(let i = 0; i < cannon.length; i++) {
-
-      if (e.key === 'ArrowLeft') {
-        squares[cannon[currentIndex]].classList.remove('cannon')
-        cannon[currentIndex] -= 1
-        squares[cannon[currentIndex]].classList.add('cannon')
-      } else if (e.key === 'ArrowRight'){
-        squares[cannon[currentIndex]].classList.remove('cannon')
-        cannon[currentIndex] += 1
-        squares[cannon[currentIndex]].classList.add('cannon')
-      }
+// logic to operate space ship
+  function moveSpaceShip (e) {
+    squares[spaceShipIndex].classList.remove('spaceShip')
+    if (e.key === 'ArrowLeft' && spaceShipIndex > 210) {
+      spaceShipIndex -= 1
+    } else if (e.key === 'ArrowRight' && spaceShipIndex < 224){
+      spaceShipIndex += 1
     }
-
-    if (squares[cannon[currentIndex]] === 210) {
-      cannon[currentIndex] = 210
-    } else if (squares[cannon[currentIndex]] === 224) {
-      cannon[currentIndex] = 224
-    }
-
+    squares[spaceShipIndex].classList.add('spaceShip')
   }
 
-  document.addEventListener('keydown', moveCannon)
 
-  // when user press left  key 37  move cannon direction +1
+  // logic to fire Lazer
+  function fireLazer (e) {
+    if (e.key === 'ArrowUp') {
+      let lazer = spaceShipIndex
+      const fireLazerId = setInterval(() => {
+        squares[lazer].classList.remove('lazer')
+        lazer -= width
+        if (lazer > -1) {
+          squares[lazer].classList.add('lazer')
+        }else if (lazer <= 0){
+          clearInterval(fireLazerId)
+        }
+      }, 100)
+    }
+  }
 
-  //     cannonIndex[].classList.remove('cannon')
-  //     cannon = cannon + 1
-  //     cannon.classList.add('cannon')
+
+  document.addEventListener('keydown', moveSpaceShip)
+  document.addEventListener('keydown', fireLazer)
+
+  // when user press left  key 37  move spaceShip direction +1
+
+  //     cannonIndex[].classList.remove('spaceShip')
+  //     spaceShip = spaceShip + 1
+  //     spaceShip.classList.add('spaceShip')
   //
   //   }
   // }
 
-  // else if// when user press right key 39 cannon direction -1
+  // else if// when user press right key 39 spaceShip direction -1
   // (e.keyCode === 39) {
-  //   cannon.classList.remove('cannon')
+  //   spaceShip.classList.remove('spaceShip')
   // } else if (e.keyCode === 38) {
-  //   cannon.classList.remove('cannon')
+  //   spaceShip.classList.remove('spaceShip')
   // }
   //
 
   //   if(e.keyCode === 39)
-  // fire cannon when user press forward  key 38
+  // fire spaceShip when user press forward  key 38
 
-  // square[5].classList.remove('.cannon')
+  // square[5].classList.remove('.spaceShip')
 
 
 
