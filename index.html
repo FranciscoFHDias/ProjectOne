@@ -7,12 +7,25 @@
     <script src="js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <h1>Space Invaders</h1>
+    <h1>
+      <img src="images/PinClipart.com_space-invaders-clip-art_1780038.png" alt="Space Invaders">
+    </h1>
 
     <section>
-      <div>Score: <span class="score">0</span></div>
-      <div><span class="difficulty">Level 1</span></div>
+      <p class:"scoreBoard">Score: <span class="score">0</span></p>
+      <p class:"difficultyBoard">Level: <span class="difficulty">1</span></p>
     </section>
+
+    <section class="gameOverHide">
+      <h2>G A M E &nbsp O V E R</h2>
+      <button name="Play again">Play Again</button>
+    </section>
+
+    <section class="nextLevelHide">
+      <h2>G A M E &nbsp O V E R</h2>
+      <button name="Level 2">Play Level 2</button>
+    </section>
+
     <div class="grid">
       <div></div>
       <div></div>
@@ -241,8 +254,6 @@
       <div></div>
       <div></div>
     </div>
-
-
 
   </body>
 </html>

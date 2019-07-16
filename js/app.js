@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const squares = document.querySelectorAll('.grid div')
+  const gameOver = document.querySelector('.gameOverHide')
+  const reset = document.querySelector('button')
   let scoreBoard = document.querySelector('.score')
   let score = null
   const invaders = [0,2,4,6,8,10,12]
@@ -9,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let lazer = spaceShipIndex
 
 
-  console.log(invaders)
   // create a line of 1space 6invader 1space 6invader 1space invaders at the top of the grid
   // invaders.forEach(index => squares[index].classList.add('invader'))
 
@@ -18,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // for loop that moves the invaders
     for(let i = 0; i < invaders.length; i++) {
       squares[invaders[i]].classList.remove('invader')
-      console.log(invaders[i], 'hello')
       invaders[i] += direction
       squares[invaders[i]].classList.add('invader')
     }
@@ -36,7 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (invaders.some(invader => invader >= 210)) {
       clearInterval(moveInvadersId)
-      //gameover and reset game
+      invaders.forEach(invader => squares[invader].classList.remove('invader'))
+      squares[spaceShipIndex].classList.remove('spaceShip')
+
+      squares.forEach(function(square) {
+        if (square.style.display === 'none') {
+          square.style.display = ''
+        } else {
+          square.style.display = 'none'
+        }
+      })
+
+      gameOver.classList.remove('gameOverHide')
+      gameOver.classList.add('gameOver')
+
     }
   }
 
@@ -59,11 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
     squares[spaceShipIndex].classList.add('spaceShip')
   }
 
-
   // logic to fire Lazer
   function fireLazer (e) {
-    if (e.key === 'ArrowUp') {
+    if (e.key === 'ArrowDown') {
       let lazer = spaceShipIndex
+      // if (invaders.length === 0) {
+      //   squares.forEach(function(square) {
+      //     if (square.style.display === 'none') {
+      //       square.style.display = ''
+      //     } else {
+      //       square.style.display = 'none'
+      //     }
+      //   })
+      // 
+      //
+      // }
       const fireLazerId = setInterval(() => {
         squares[lazer].classList.remove('lazer')
         lazer -= width
@@ -87,30 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keydown', moveSpaceShip)
   document.addEventListener('keydown', fireLazer)
-
-  // when user press left  key 37  move spaceShip direction +1
-
-  //     cannonIndex[].classList.remove('spaceShip')
-  //     spaceShip = spaceShip + 1
-  //     spaceShip.classList.add('spaceShip')
-  //
-  //   }
-  // }
-
-  // else if// when user press right key 39 spaceShip direction -1
-  // (e.keyCode === 39) {
-  //   spaceShip.classList.remove('spaceShip')
-  // } else if (e.keyCode === 38) {
-  //   spaceShip.classList.remove('spaceShip')
-  // }
-  //
-
-  //   if(e.keyCode === 39)
-  // fire spaceShip when user press forward  key 38
-
-  // square[5].classList.remove('.spaceShip')
-
-
-
+  reset.addEventListener('click', () => location.reload())
 
 })

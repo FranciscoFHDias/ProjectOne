@@ -1,36 +1,90 @@
 *{
   box-sizing: border-box;
 }
+
 body {
   margin: auto;
   width: 600px;
+  padding-top: 50px;
+  background-color: black;
 }
 
 h1 {
   width: 450px;
   text-align: center;
+  margin: auto;
+  padding-bottom: 50px;
+}
+
+h2 {
+  font-size: 30px;
+  font-family: monospace;
+  color: green;
+  word-spacing: 10px;
+  font-family: monospace;
+}
+
+.gameOver {
+  flex-direction: column;
+  text-align: center;
+}
+
+.gameOverHide {
+  display: none;
+}
+
+.nextLevelHide {
+  flex-direction: column;
+  text-align: center;
+}
+
+.nextLevelHide {
+  display: none;
+}
+
+
+button {
+  width: 50%;
+  margin: auto;
+  color: green;
+  background-color: black;
+  font-size: 20px;
+  border: 0;
+  font-family: monospace;
 }
 
 section {
   display: flex;
   justify-content: space-between;
   width: 450px;
+  margin: auto;
 }
 
-.score {
-  width: 60px
+p {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 0px 10px 0px;
+  font-family: monospace;
+  font-size: 20px;
+  color: green;
 }
-.difficulty{
-  width: 60px
+
+span {
+  padding-left: 5px;
 }
 
 div.grid {
   display: flex;
   flex-wrap: wrap;
-  background-color: blue;
   width: 450px;
   height: 450px;
+  margin:auto;
 }
+
+.none{
+  display: none;
+}
+
 
 div {
   width: 30px;
@@ -38,17 +92,26 @@ div {
 }
 
 .invader {
-  background-color: yellow;
+  background-image: url(https://media0.giphy.com/media/KY2ZMhnCxP008/giphy.gif?cid=790b76115d2cde31504b7a616b4769ee&rid=giphy.gif);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 .spaceShip {
-  background-color: red;
+  background-image: url(../images/PinClipart.com_santa-sleigh-clip-art_1080856.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .lazer {
-  background-color: green;
+  background-image: url(../images/PinClipart.com_missile-clip-art_625813.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+img {
+  width: 70%;
 }
