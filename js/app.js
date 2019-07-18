@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const winPlayAgain = document.querySelector('.winPlayAgain')
   const scoreBoard = document.querySelector('.score')
   let score = null
-  const invaders = [0,2,4,6,8,10,12]
+  let invaders = [0,2,4,6,8,10,12]
   const width = 15
   let direction = 1
   let spaceShipIndex = 217
@@ -34,19 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(moveInvadersId)
       clearInterval(fireBombId)
       squares.forEach(function(square) {
-        square.classList.remove('bomb')
-        square.classList.remove('lazer')
+
+        square.classList.remove('invader', 'spaceShip', 'bomb', 'lazer')
+
         if (square.style.display === 'none') {
           square.style.display = ''
         } else {
           square.style.display = 'none'
         }
       })
+
       winner.classList.remove('levelTwoHide')
       winner.classList.add('levelTwo')
 
-      document.removeEventListener('keydown', moveSpaceShip)
-      document.removeEventListener('keydown', fireLazer)
     }
 
     // for loop that moves the invaders
@@ -71,8 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(moveInvadersId)
       clearInterval(fireBombId)
       squares.forEach(function(square) {
-        square.classList.remove('bomb')
-        square.classList.remove('lazer')
+        square.classList.remove('invader', 'spaceShip', 'bomb', 'lazer')
         if (square.style.display === 'none') {
           square.style.display = ''
         } else {
@@ -84,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const moveInvadersId = setInterval(moveInvaders, 500)
+  let moveInvadersId = setInterval(moveInvaders, 500)
 
 
 // logic to operate space ship
@@ -97,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     squares[spaceShipIndex].classList.add('spaceShip')
   }
+
 
   // logic to fire Lazer
   function fireLazer (e) {
@@ -112,8 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }else if (squares[lazer].classList.contains('invader') === true){
           killingInvaders.play()
           clearInterval(fireLazerId)
-          squares[lazer].classList.remove('lazer')
-          squares[lazer].classList.remove('invader')
+          squares[lazer].classList.remove('lazer','invader')
           score++
           scoreBoard.textContent = score
           const invaderIndex = invaders.indexOf(lazer)
@@ -126,27 +125,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  let intervals1 = []
 
-  const fireBombId = setInterval(fireBomb, 1000)
+  let fireBombId = setInterval(fireBomb, 1000)
 
   function fireBomb() {
     let bombIndex = Math.floor(Math.random() * 15)
-    const bombTimerId = setInterval(function () {
+    const bombTimerId = setInterval(() => {
       squares[bombIndex].classList.remove('bomb')
       bombIndex += width
       if (bombIndex > 224 ) {
         clearInterval(bombTimerId)
       } else if (squares[bombIndex].classList.contains('lazer') === true){
         clearInterval(bombTimerId)
-        squares[bombIndex].classList.remove('lazer')
-        squares[bombIndex].classList.remove('bomb')
+        squares[bombIndex].classList.remove('lazer','bomb')
       } else if (squares[bombIndex].classList.contains('spaceShip') === true) {
         spaceShipExplosion.play()
         clearInterval(moveInvadersId)
+        clearInterval(fireBombId)
         clearInterval(bombTimerId)
-        squares.forEach(square => square.classList.remove('invader'))
-        squares[bombIndex].classList.remove('spaceShip')
-        squares[bombIndex].classList.remove('bomb')
+        squares.forEach(square => square.classList.remove('invader', 'spaceShip', 'bomb', 'lazer'))
         squares.forEach(function(square) {
           if (square.style.display === 'none') {
             square.style.display = ''
@@ -159,8 +157,34 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         squares[bombIndex].classList.add('bomb')
       }
-    }, 300)
+    }, 150)
+  }
 
+  function playAgain () {
+    clearInterval(moveInvadersId)
+    clearInterval(fireBombId)
+    squares.forEach(square => square.classList.remove('invader', 'spaceShip', 'bomb', 'lazer'))
+    intervals1.forEach(interval => clearInterval(interval))
+    squares.forEach(function(square) {
+      if (square.style.display === 'none') {
+        square.style.display = ''
+      } else {
+        square.style.display = ''
+      }
+    })
+    winner.classList.remove('levelTwo')
+    gameOver.classList.remove('gameOver')
+    gameOver.classList.add('gameOverHide')
+    winner.classList.add('levelTwoHide')
+    invaders = [0,2,4,6,8,10,12]
+    direction = 1
+    spaceShipIndex = 217
+    moveInvaders()
+    moveInvadersId = setInterval(moveInvaders, 500)
+    fireBomb()
+    fireBombId = setInterval(fireBomb, 2000)
+    score = 0
+    scoreBoard.textContent = score
   }
   // const fireBombId = setInterval(fireBomb, 1000)
 
@@ -177,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keydown', moveSpaceShip)
   document.addEventListener('keydown', fireLazer)
-  losePlayAgain.addEventListener('click', () => location.reload())
-  winPlayAgain.addEventListener('click', () => location.reload())
+  losePlayAgain.addEventListener('click', playAgain)
+  winPlayAgain.addEventListener('click', playAgain)
 
 })
