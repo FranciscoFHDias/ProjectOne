@@ -33,18 +33,16 @@ h2 {
   display: none;
 }
 
-.nextLevelHide {
+.levelTwo {
   flex-direction: column;
   text-align: center;
 }
 
-.nextLevelHide {
+.levelTwoHide {
   display: none;
 }
 
-
 button {
-  width: 50%;
   margin: auto;
   color: green;
   background-color: black;
@@ -92,7 +90,7 @@ div {
 }
 
 .invader {
-  background-image: url(https://media0.giphy.com/media/KY2ZMhnCxP008/giphy.gif?cid=790b76115d2cde31504b7a616b4769ee&rid=giphy.gif);
+  background-image: url(../images/5d30598cb8616.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -106,7 +104,14 @@ div {
 }
 
 .lazer {
-  background-image: url(../images/PinClipart.com_missile-clip-art_625813.png);
+  background-image: url(../images/PinClipart.com_rocket-launch-clip-art_688181.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bomb {
+  background-image: url(../images/5d3058b105000.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
