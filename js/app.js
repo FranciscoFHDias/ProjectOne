@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const fireLazerId = setInterval(() => {
         squares[lazer].classList.remove('lazer')
         lazer -= width
+
         if (lazer <= 0){
           clearInterval(fireLazerId)
         }else if (squares[lazer].classList.contains('invader') === true){
@@ -89,6 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
           scoreBoard.textContent = score
           const invaderIndex = invaders.indexOf(lazer)
           invaders.splice(invaderIndex, 1)
+        }else if (squares[lazer].classList.contains('bomb') === true) {
+          clearInterval(fireLazerId)
+          squares[lazer].classList.remove('lazer','bomb')
+          score = score + 10
         }else if (lazer > -1) {
           squares[lazer].classList.add('lazer')
         }
@@ -118,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         squares[bombIndex].classList.add('bomb')
       }
-    }, 150)
+    }, 100)
   }
 
 
@@ -157,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     moveInvaders()
     moveInvadersId = setInterval(moveInvaders, 500)
     fireBomb()
-    fireBombId = setInterval(fireBomb, 2000)
+    fireBombId = setInterval(fireBomb, 1000)
     score = 0
     scoreBoard.textContent = score
   }
