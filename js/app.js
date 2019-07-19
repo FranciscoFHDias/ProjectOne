@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     squares[spaceShipIndex].classList.add('spaceShip')
   }
 
+  let lazerIntervals = []
   // logic to fire Lazer
   function fireLazer (e) {
     if (e.key === 'ArrowUp') {
@@ -79,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const fireLazerId = setInterval(() => {
         squares[lazer].classList.remove('lazer')
         lazer -= width
-
         if (lazer <= 0){
           clearInterval(fireLazerId)
         }else if (squares[lazer].classList.contains('invader') === true){
@@ -98,8 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
           squares[lazer].classList.add('lazer')
         }
       }, 100)
+      lazerIntervals.push(fireLazerId)
     }
   }
+
+  let bombIntervals = []
 
   let fireBombId = setInterval(fireBomb, 1000)
 
@@ -124,37 +127,40 @@ document.addEventListener('DOMContentLoaded', () => {
         squares[bombIndex].classList.add('bomb')
       }
     }, 100)
+    bombIntervals.push(bombIntervals)
   }
 
-
-  function losing() {
+  function clearingIntervals() {
+    bombIntervals.forEach(interval => clearInterval(interval))
+    lazerIntervals.forEach(interval => clearInterval(interval))
     clearInterval(moveInvadersId)
     clearInterval(fireBombId)
     squares.forEach(square => square.classList.remove('invader', 'spaceShip', 'bomb', 'lazer'))
     squares.forEach(square => square.style.display = 'none')
+  }
+
+  function losing() {
+    clearingIntervals()
     gameOver.classList.add('gameOver')
     gameOver.classList.remove('gameOverHide')
   }
 
   function winning() {
-    clearInterval(moveInvadersId)
-    clearInterval(fireBombId)
-    squares.forEach(square => square.classList.remove('invader', 'spaceShip', 'bomb', 'lazer'))
-    squares.forEach(square => square.style.display = 'none')
+    clearingIntervals()
     winner.classList.remove('levelTwoHide')
     winner.classList.add('levelTwo')
   }
 
   // logic to reset button
   function playAgain () {
-    clearInterval(moveInvadersId)
-    clearInterval(fireBombId)
-    squares.forEach(square => square.classList.remove('invader', 'spaceShip', 'bomb', 'lazer'))
+    clearingIntervals()
     squares.forEach(square => square.style.display = '')
     winner.classList.remove('levelTwo')
     gameOver.classList.remove('gameOver')
     winner.classList.add('levelTwoHide')
     gameOver.classList.add('gameOverHide')
+    bombIntervals = []
+    lazerIntervals = []
     invaders = [0,2,4,6,8,10,12]
     direction = 1
     spaceShipIndex = 217
