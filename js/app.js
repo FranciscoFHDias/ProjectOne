@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // logic to operate space ship
   function moveSpaceShip (e) {
+    e.preventDefault()
     squares[spaceShipIndex].classList.remove('spaceShip')
     if (e.key === 'ArrowLeft' && spaceShipIndex > 210) {
       spaceShipIndex -= 1
@@ -105,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let bombIntervals = []
 
   let fireBombId = setInterval(fireBomb, 1000)
-
   // logic to fire Bombs
   function fireBomb() {
     let bombIndex = Math.floor(Math.random() * 15)
