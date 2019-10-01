@@ -1,4 +1,7 @@
-# Project One - Space Invaders
+![ga_cog_large_red_rgb](https://cloud.githubusercontent.com/assets/40461/8183776/469f976e-1432-11e5-8199-6ac91363302b.png)
+# Project One - Space Invaders [Check out the game](https://franciscofhdias.github.io/ProjectOne/)
+
+![Space Invaders](https://user-images.githubusercontent.com/49660544/61526596-99eba000-aa12-11e9-88b7-14152face7e5.gif)
 
 ## Overview
 
@@ -8,9 +11,7 @@ The player can only move left or right. The aliens also move from left to right,
 
 The player will win when all aliens die. The aim is for the player to achieve the highest score possible by killing aliens or destroying bombs before either destroying all aliens, being destroyed by a bomb, or allowing the aliens to reach the planet.
 
-[Check out the game](https://franciscofhdias.github.io/ProjectOne/)
 
-![Space Invaders](https://user-images.githubusercontent.com/49660544/61526596-99eba000-aa12-11e9-88b7-14152face7e5.gif)
 
 ## Brief
 
