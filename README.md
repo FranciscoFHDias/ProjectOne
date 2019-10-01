@@ -1,5 +1,6 @@
 ![ga_cog_large_red_rgb](https://cloud.githubusercontent.com/assets/40461/8183776/469f976e-1432-11e5-8199-6ac91363302b.png)
-# Project One - Space Invaders [Check out the game](https://franciscofhdias.github.io/ProjectOne/)
+# Project One - Space Invaders 
+[Check out the game](https://franciscofhdias.github.io/ProjectOne/)
 
 ![Space Invaders](https://user-images.githubusercontent.com/49660544/61526596-99eba000-aa12-11e9-88b7-14152face7e5.gif)
 
