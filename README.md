@@ -111,24 +111,21 @@ function fireBomb() {
 ## Wins and Blockers
 
 ### Wins
-* The main challenge was the movement of a large group of aliens in formation
- * The animation of the bombs and player's shots was also challenging.
- * Collision detection was challenging
- * Clearing setIntervals
+* Achieving the movement of a large group of aliens formation
+* The animation of the bombs and player's shots was also challenging
+* Collision detection by running an 'if' statement
+* Clearing setIntervals when winning and losing
  
 ### Blockers
+* Increase the number of aliens or used it in different formation
 
-
-## Future features
-* Responsive design
-* Include difficulty levels with more invaders, faster bombs and invaders.
-* Persistent leaderboard using `localStorage`
+## Future Content/Features
+* Responsive design for different devices
+* Include difficulty levels with more invaders, faster bombs and spaceships fires.
+* Fixed leaderboard using `localStorage` through the levels
 
 ## What you have learned (tech & soft skills)
-* Make sure you spend plenty of time planning _before_ you start coding
-* Make sure you understand all of the rules of the game
-* Make a checklist of all the features you want to add to the game
-* Keep It Stupid Simple
-* Refactor your code as you go
-* Make sure you have a good idea of what your MVP is and only add extra features once you have achieved it
-* Do just enough styling to get started, then once you have your MVP polish up the styling before moving on
+* The importance of spending time planning before start coding
+* Fully understand the brief and if not ask questions
+* Make a checklist of all the features needed to achieve MVP vs further features
+* Keep things simple and make code self-explanatory
