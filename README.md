@@ -63,6 +63,8 @@ if ((atLeftEdge && direction === -1) || (atRightEdge && direction === 1)) {
 
 ### Spaceship Movement
 
+By creating an event listener and the logic below, I then achieved the movement for the spaceship.
+
 ```js
 function moveSpaceShip (e) {
   squares[spaceShipIndex].classList.remove('spaceShip')
@@ -77,7 +79,7 @@ function moveSpaceShip (e) {
 
 ### Spaceship Lazer and Invaders Bombs 
 
-I used a similar approach forboth Lazer and Invaders Bombs. 
+To fire random bombs I used math.random to produce a div[i] and setInterval. The similar logic was used for the spaceship fire. Then if the same div has class 'lazer' and 'bomb' both setIntervals are removed and points added to the scoreboard.
 
 ```js
 let fireBombId = setInterval(fireBomb, 1000)
@@ -107,12 +109,14 @@ function fireBomb() {
 ```
 
 ## Wins and Blockers
+
+### Wins
 * The main challenge was the movement of a large group of aliens in formation
  * The animation of the bombs and player's shots was also challenging.
  * Collision detection was challenging
  * Clearing setIntervals
-
-
+ 
+### Blockers
 
 
 ## Future features
