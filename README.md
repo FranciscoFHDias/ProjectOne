@@ -6,15 +6,11 @@
 
 ## Overview
 
-A classic arcade game which the player aims to shoot an invading alien armada.
-
-The player can only move left or right. The aliens also move from left to right, and down each time they reach the side of the screen. Bombs will also drop towards the player.
+A classic arcade game which the player aims to shoot an invading alien armada.The player can only move left or right. The aliens also move from left to right, and down each time they reach the side of the screen. Bombs will also drop towards the player.
 
 The player will win when all aliens die. The aim is for the player to achieve the highest score possible by killing aliens or destroying bombs before either destroying all aliens, being destroyed by a bomb, or allowing the aliens to reach the planet.
 
-
-
-## Brief
+## Project Brief and Technical Requirements
 
 * Design logic for player to be able to clear at least one wave of aliens and display the score at end of the game,
 * Use semantic markup for HTML and CSS (adhere to best practices),
@@ -23,7 +19,9 @@ The player will win when all aliens die. The aim is for the player to achieve th
 * Use Javascript for DOM manipulation,
 * Deploy the game online, using Github Pages,
 
-## Technologies used
+## Project Execution
+
+### Technologies used
 * HTML5 with HTML5 audio
 * CSS3
 * JavaScript (ES6)
@@ -32,20 +30,17 @@ The player will win when all aliens die. The aim is for the player to achieve th
 
 ## Project Overview
 
-##### Grid layout
+### Grid layout
 
-The grid is represented by 225 divs 30px by 30px (grid = 15 divs x 15 divs) wrapped in a grid using CSS3 Flex-Box. I found this method worked well for me because I was able to use arrays to create the effect of movement with JavaScript ES6 and styling with CSS.
+The grid is represented by 225 divs 30px by 30px (grid = 15 divs x 15 divs) wrapped in a grid using CSS3 Flex-Box. I found this method worked well for me because I was able to use arrays of divs to create the effect of movement with JavaScript ES6 and styling with CSS.
 
-#### Scoreboard and Difficulty
+### Scoreboard and Difficulty
 
-I created a different section with a couple of divs inside. Flex-Box space-between made it easier to position above the grid.
+I made this by creating a different section with a couple of divs inside which Flex-Box space-between made it easier to position above the grid.
 
+### Invaders Movement
 
-
-Approach taken - Thought process & methods of producing it
-Snippets of your code and screenshots of your project
-
-#### Invaders Movement
+Having created the style for the class invader, I then used a JS for loop to remove this class from the current div, add direction to div[i] followed by adding class invader.
 
 ```js
 for(let i = 0; i < invaders.length; i++) {
@@ -66,7 +61,7 @@ if ((atLeftEdge && direction === -1) || (atRightEdge && direction === 1)) {
 }
 ```
 
-#### Spaceship Movement
+### Spaceship Movement
 
 ```js
 function moveSpaceShip (e) {
@@ -80,9 +75,9 @@ function moveSpaceShip (e) {
 }
 ```
 
-#### Spaceship Lazer and Invaders Bombs
+### Spaceship Lazer and Invaders Bombs 
 
-I used a similar approach forboth Lazer and Invaders Bombs 
+I used a similar approach forboth Lazer and Invaders Bombs. 
 
 ```js
 let fireBombId = setInterval(fireBomb, 1000)
@@ -110,8 +105,6 @@ function fireBomb() {
   bombIntervals.push(bombIntervals)
 }
 ```
-
-
 
 ## Wins and Blockers
 * The main challenge was the movement of a large group of aliens in formation
