@@ -3,7 +3,7 @@
 
 [Check out the game](https://franciscofhdias.github.io/ProjectOne/)
 
-![img width="1391" alt="Date-a-base screenshot" src="https://user-images.githubusercontent.com/49660544/61526596-99eba000-aa12-11e9-88b7-14152face7e5.gif">](https://franciscofhdias.github.io/ProjectOne/)
+![<img width="1391" alt="Date-a-base screenshot" src="https://user-images.githubusercontent.com/49660544/61526596-99eba000-aa12-11e9-88b7-14152face7e5.gif">](https://franciscofhdias.github.io/ProjectOne/)
 
 ## Overview
 
